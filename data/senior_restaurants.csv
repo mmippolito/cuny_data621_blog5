@@ -1,0 +1,20 @@
+Geo Point,Geo Shape,id,nom,adresse,type
+"43.600381001131474,1.4840370030046046","{""coordinates"": [[1.484037003004605, 43.600381001131474]], ""type"": ""MultiPoint""}",7,Restaurant Chateau de l'Hers,56 chemin du Chateau de l'Hers,Restaurant
+"43.63642900013789,1.4629520005260161","{""coordinates"": [[1.462952000526016, 43.63642900013789]], ""type"": ""MultiPoint""}",3,Restaurant Croix-Daurade,5 rue Francis lopez,Restaurant
+"43.59571500087478,1.43442299464598","{""coordinates"": [[1.43442299464598, 43.59571500087478]], ""type"": ""MultiPoint""}",5,Restaurant de Saint-Cyprien,5 rue des Feuillants,Restaurant
+"43.61063399726794,1.478787994810826","{""coordinates"": [[1.478787994810826, 43.61063399726794]], ""type"": ""MultiPoint""}",9,Restaurant Soupetard-Serveyrolles,44 rue louis Plana,Restaurant
+"43.57880766681575,1.3839388658123843","{""coordinates"": [[1.383938865812384, 43.57880766681575]], ""type"": ""MultiPoint""}",14,Restaurant les Pradettes,7 rue Ferdinand de Lesseps,Restaurant
+"43.57604755284985,1.4551766282022647","{""coordinates"": [[1.455176628202265, 43.57604755284985]], ""type"": ""MultiPoint""}",13,Restaurant Jules Julien,42 bis Avenue de Rangueil,Restaurant
+"43.57606413964686,1.4094961901271683","{""coordinates"": [[1.409496190127168, 43.57606413964686]], ""type"": ""MultiPoint""}",16,Restaurant Papus,13 rue du Bearn,Restaurant
+"43.564977646518166,1.4107408240786297","{""coordinates"": [[1.41074082407863, 43.564977646518166]], ""type"": ""MultiPoint""}",17,Restaurant Lafourguette,2 place des Glieres,Restaurant
+"43.64073000001736,1.4398120017513134","{""coordinates"": [[1.439812001751313, 43.64073000001736]], ""type"": ""MultiPoint""}",2,Restaurant des Izards,1 rue Van Dyck,Restaurant
+"43.60259099822294,1.4660079976702223","{""coordinates"": [[1.466007997670222, 43.60259099822294]], ""type"": ""MultiPoint""}",8,Restaurant Providence Bonhoure,18B place Pinel,Restaurant
+"43.571326999478785,1.4013530005179562","{""coordinates"": [[1.401353000517956, 43.571326999478785]], ""type"": ""MultiPoint""}",10,Restaurant Reynerie,14 Place André Abbal,Restaurant
+"43.584643000309576,1.4846439956199815","{""coordinates"": [[1.484643995619982, 43.584643000309576]], ""type"": ""MultiPoint""}",11,Restaurant de la Terrasse,Impasse Schrader,Restaurant
+"43.58935809783895,1.3785410313264665","{""coordinates"": [[1.378541031326467, 43.58935809783895]], ""type"": ""MultiPoint""}",15,Restaurant Lardenne,2 place Jacques Sauvegrain,Restaurant
+"43.60638793163842,1.444027790130667","{""coordinates"": [[1.444027790130667, 43.60638793163842]], ""type"": ""MultiPoint""}",1,Restaurant du Sénéchal,6 rue Montoyol,Restaurant
+"43.618003000086595,1.3995769962393614","{""coordinates"": [[1.399576996239361, 43.618003000086595]], ""type"": ""MultiPoint""}",4,Restaurant d'Ancely,23 allée d'Ancely,Restaurant
+"43.580918000181434,1.4419369960104953","{""coordinates"": [[1.441936996010495, 43.580918000181434]], ""type"": ""MultiPoint""}",6,Restaurant d'Empalot-Daste,30 avenue Jean Moulin,Restaurant
+"43.62037400094093,1.4350899997508366","{""coordinates"": [[1.435089999750837, 43.62037400094093]], ""type"": ""MultiPoint""}",12,Restaurant des Minimes,Place du Marché aux cochons,Restaurant
+"43.61672181097186,1.4085754780940363","{""coordinates"": [[1.408575478094036, 43.61672181097186]], ""type"": ""MultiPoint""}",18,Restaurant Sept Deniers,107 route de Blagnac,Restaurant
+"43.58570764083111,1.465753689416173","{""coordinates"": [[1.465753689416173, 43.58570764083111]], ""type"": ""MultiPoint""}",19,Restaurant Pont des Demoiselles,63b av Saint Exupery,Restaurant

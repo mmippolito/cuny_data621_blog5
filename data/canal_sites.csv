@@ -1,0 +1,90 @@
+Geo Point,Geo Shape,id,equipement
+"43.60191669365471,1.447437387560599","{""coordinates"": [[1.447437387560599, 43.60191669365471]], ""type"": ""MultiPoint""}",1,"Auberge des Trois-Anges, 13 place Saint-Georges"
+"43.63251526782563,1.421848011651579","{""coordinates"": [[1.421848011651579, 43.63251526782563]], ""type"": ""MultiPoint""}",12,Port des hydrocarbures
+"43.599447235109885,1.456753162212179","{""coordinates"": [[1.456753162212179, 43.599447235109885]], ""type"": ""MultiPoint""}",16,Archives du canal
+"43.5963163756008,1.456632906783613","{""coordinates"": [[1.456632906783613, 43.5963163756008]], ""type"": ""MultiPoint""}",20,Port Saint-Sauveur
+"43.58888261152542,1.458553490952551","{""coordinates"": [[1.458553490952551, 43.58888261152542]], ""type"": ""MultiPoint""}",25,Cale couverte
+"43.58865122337501,1.459896746397773","{""coordinates"": [[1.459896746397773, 43.58865122337501]], ""type"": ""MultiPoint""}",26,Garage à flot
+"43.64525808984465,1.422438989790795","{""coordinates"": [[1.422438989790795, 43.64525808984465]], ""type"": ""MultiPoint""}",27,Port des péniches de Ginestous
+"43.613612170426464,1.451106633545677","{""coordinates"": [[1.451106633545677, 43.613612170426464]], ""type"": ""MultiPoint""}",36,Moulin sur l’écluse de Matabiau
+"43.64650768599269,1.423101999747353","{""coordinates"": [[1.423101999747353, 43.64650768599269]], ""type"": ""MultiPoint""}",40,Ecluse de Lalande et maison éclusière
+"43.610533816158785,1.41898618172506","{""coordinates"": [[1.41898618172506, 43.610533816158785]], ""type"": ""MultiPoint""}",43,Ecluse des Ponts-Jumeaux
+"43.5743039172542,1.469174422338686","{""coordinates"": [[1.469174422338686, 43.5743039172542]], ""type"": ""MultiPoint""}",45,Pont-canal des Herbettes
+"43.59986649887636,1.456469727707469","{""coordinates"": [[1.456469727707469, 43.59986649887636]], ""type"": ""MultiPoint""}",48,Le lavoir du port Saint-Etienne
+"43.609304225904474,1.453999012627156","{""coordinates"": [[1.453999012627156, 43.609304225904474]], ""type"": ""MultiPoint""}",5,Statue de Pierre-Paul Riquet
+"43.57512344167501,1.468093206459373","{""coordinates"": [[1.468093206459373, 43.57512344167501]], ""type"": ""MultiPoint""}",55,Passerelle des Herbettes
+"43.59416740941545,1.456676106600679","{""coordinates"": [[1.456676106600679, 43.59416740941545]], ""type"": ""MultiPoint""}",59,Passerelle des Soupirs
+"43.60510037295424,1.456898680332372","{""coordinates"": [[1.456898680332372, 43.60510037295424]], ""type"": ""MultiPoint""}",63,Pont de la Colombette
+"43.606404575587476,1.456186242091551","{""coordinates"": [[1.456186242091551, 43.606404575587476]], ""type"": ""MultiPoint""}",64,Pont Gabriel-Péri
+"43.60938750207235,1.454127189172995","{""coordinates"": [[1.454127189172995, 43.60938750207235]], ""type"": ""MultiPoint""}",65,Pont Riquet
+"43.60605614194672,1.431373697446033","{""coordinates"": [[1.431373697446033, 43.60605614194672]], ""type"": ""MultiPoint""}",7,Canal de Brienne
+"43.61122540092995,1.419994701131816","{""coordinates"": [[1.419994701131816, 43.61122540092995]], ""type"": ""MultiPoint""}",73,Pont du Béarnais
+"43.611308854470636,1.418274047260299","{""coordinates"": [[1.418274047260299, 43.611308854470636]], ""type"": ""MultiPoint""}",75,Ponts-Jumeaux (sur le canal du Languedoc et le canal de Brienne)
+"43.615418066706724,1.445856708646256","{""coordinates"": [[1.445856708646256, 43.615418066706724]], ""type"": ""MultiPoint""}",76,Ponts-Jumeaux (sur le canal latéral à la Garonne)
+"43.61042551714595,1.419297509662231","{""coordinates"": [[1.419297509662231, 43.61042551714595]], ""type"": ""MultiPoint""}",77,Passerelle de Chapou
+"43.65673444426702,1.419656813070407","{""coordinates"": [[1.419656813070407, 43.65673444426702]], ""type"": ""MultiPoint""}",89,Pont de Rupé
+"43.599925597240215,1.456080678426331","{""coordinates"": [[1.456080678426331, 43.599925597240215]], ""type"": ""MultiPoint""}",13,Port Saint-Etienne
+"43.59991155918883,1.456866472645107","{""coordinates"": [[1.456866472645107, 43.59991155918883]], ""type"": ""MultiPoint""}",15,Château du canal
+"43.59863476425337,1.456783605739177","{""coordinates"": [[1.456783605739177, 43.59863476425337]], ""type"": ""MultiPoint""}",17,Bureau du receveur de la barque de poste/ siège de VNF Sud Ouest
+"43.6137204200672,1.451421644429894","{""coordinates"": [[1.451421644429894, 43.6137204200672]], ""type"": ""MultiPoint""}",35,Gare de Pont-Matabiau
+"43.6108056213827,1.452953078479126","{""coordinates"": [[1.452953078479126, 43.6108056213827]], ""type"": ""MultiPoint""}",37,Ecluse de Bayard et maison éclusière
+"43.59988162364931,1.450228758152534","{""coordinates"": [[1.450228758152534, 43.59988162364931]], ""type"": ""MultiPoint""}",4,"Cathédrale Saint-Etienne, lieu de sépulture de Riquet"
+"43.647087636723114,1.422556661930629","{""coordinates"": [[1.422556661930629, 43.647087636723114]], ""type"": ""MultiPoint""}",42,Laminoir de Lalande
+"43.611518674920084,1.4526629067781","{""coordinates"": [[1.4526629067781, 43.611518674920084]], ""type"": ""MultiPoint""}",67,Pont Bayard
+"43.61394113365174,1.450658034620117","{""coordinates"": [[1.450658034620117, 43.61394113365174]], ""type"": ""MultiPoint""}",68,Pont Matabiau
+"43.615173691508,1.442546197382392","{""coordinates"": [[1.442546197382392, 43.615173691508]], ""type"": ""MultiPoint""}",69,Passerelle du Raisin
+"43.61208732075146,1.425259825167162","{""coordinates"": [[1.425259825167162, 43.61208732075146]], ""type"": ""MultiPoint""}",72,Passerelle Kléber-Haedens
+"43.61082940130061,1.418785210634134","{""coordinates"": [[1.418785210634134, 43.61082940130061]], ""type"": ""MultiPoint""}",74,Pont Sanières
+"43.610856591148774,1.418618399272144","{""coordinates"": [[1.418618399272144, 43.610856591148774]], ""type"": ""MultiPoint""}",11,Bas relief des Ponts-Jumeaux
+"43.599965010186736,1.454240921575175","{""coordinates"": [[1.454240921575175, 43.599965010186736]], ""type"": ""MultiPoint""}",19,Chapelle Saint-Sauveur
+"43.58956164389326,1.459504533700299","{""coordinates"": [[1.459504533700299, 43.58956164389326]], ""type"": ""MultiPoint""}",24,Bassins du radoub
+"43.593326932445095,1.452895010725455","{""coordinates"": [[1.452895010725455, 43.593326932445095]], ""type"": ""MultiPoint""}",3,Domaine de Frescati ou Frescaty (allée Frédéric-Mistral)
+"43.615684406577415,1.435796952074479","{""coordinates"": [[1.435796952074479, 43.615684406577415]], ""type"": ""MultiPoint""}",33,Moulin sur l’écluse des Minimes
+"43.604104121027426,1.434213079922605","{""coordinates"": [[1.434213079922605, 43.604104121027426]], ""type"": ""MultiPoint""}",39,Ecluse Saint-Pierre et maison éclusière
+"43.55744731409655,1.479125530170039","{""coordinates"": [[1.479125530170039, 43.55744731409655]], ""type"": ""MultiPoint""}",46,Aqueduc de Saint-Agne
+"43.570146269363605,1.470257807216457","{""coordinates"": [[1.470257807216457, 43.570146269363605]], ""type"": ""MultiPoint""}",54,Pont de l’Insa
+"43.59134845968385,1.459531439717277","{""coordinates"": [[1.459531439717277, 43.59134845968385]], ""type"": ""MultiPoint""}",58,Pont SNCF boulevard Bernard-Griffoul-Dorval
+"43.60080729471203,1.456314919097512","{""coordinates"": [[1.456314919097512, 43.60080729471203]], ""type"": ""MultiPoint""}",61,Pont de Guilheméry
+"43.60366293500692,1.456887489392379","{""coordinates"": [[1.456887489392379, 43.60366293500692]], ""type"": ""MultiPoint""}",62,Passerelle Charles-Bourseul
+"43.613420945971264,1.43074905661206","{""coordinates"": [[1.43074905661206, 43.613420945971264]], ""type"": ""MultiPoint""}",71,Pont des Minimes
+"43.64825695907211,1.423260233550623","{""coordinates"": [[1.423260233550623, 43.64825695907211]], ""type"": ""MultiPoint""}",87,Pont-échangeur de Lalande
+"43.599171597256486,1.456720251478657","{""coordinates"": [[1.456720251478657, 43.599171597256486]], ""type"": ""MultiPoint""}",14,Magasins du port Saint-Etienne
+"43.595940540684715,1.455806710141417","{""coordinates"": [[1.455806710141417, 43.595940540684715]], ""type"": ""MultiPoint""}",21,Gare et entrepôts des accélérés au port Saint-Sauveur
+"43.61019133325616,1.418372106820539","{""coordinates"": [[1.418372106820539, 43.61019133325616]], ""type"": ""MultiPoint""}",29,Maison du barragiste
+"43.61013187204621,1.414361230925684","{""coordinates"": [[1.414361230925684, 43.61013187204621]], ""type"": ""MultiPoint""}",30,Ecluse de Garonne ou de l’Embouchure et maison éclusière
+"43.61586228950526,1.436205650084731","{""coordinates"": [[1.436205650084731, 43.61586228950526]], ""type"": ""MultiPoint""}",32,Ecluse des Minimes et maison éclusière
+"43.6135620562113,1.451569584129697","{""coordinates"": [[1.451569584129697, 43.6135620562113]], ""type"": ""MultiPoint""}",50,Le lavoir Matabiau
+"43.59822628419695,1.456510051676984","{""coordinates"": [[1.456510051676984, 43.59822628419695]], ""type"": ""MultiPoint""}",51,L'abreuvoir Saint-Sauveur au Port Saint-Etienne
+"43.58187752301415,1.46293190336388","{""coordinates"": [[1.46293190336388, 43.58187752301415]], ""type"": ""MultiPoint""}",56,Passerelle Albert-Bedouce
+"43.61137808713316,1.420810444187273","{""coordinates"": [[1.420810444187273, 43.61137808713316]], ""type"": ""MultiPoint""}",6,Canal du Midi
+"43.598543169995686,1.456232750084237","{""coordinates"": [[1.456232750084237, 43.598543169995686]], ""type"": ""MultiPoint""}",60,Pont Montaudran
+"43.6105417348226,1.453134921221562","{""coordinates"": [[1.453134921221562, 43.6105417348226]], ""type"": ""MultiPoint""}",66,Passerelle piétonne de l’écluse Bayard
+"43.6071981653047,1.428252957195325","{""coordinates"": [[1.428252957195325, 43.6071981653047]], ""type"": ""MultiPoint""}",79,Pont Paul-Séjourné
+"43.60649765531659,1.430310969837146","{""coordinates"": [[1.430310969837146, 43.60649765531659]], ""type"": ""MultiPoint""}",80,Pont du Maréchal-Leclerc
+"43.60485540088416,1.43261657116375","{""coordinates"": [[1.43261657116375, 43.60485540088416]], ""type"": ""MultiPoint""}",81,Arche Saint-Pierre
+"43.6205912276215,1.419518169229647","{""coordinates"": [[1.419518169229647, 43.6205912276215]], ""type"": ""MultiPoint""}",82,Passerelle flottante du stade
+"43.6338947003867,1.421329831186221","{""coordinates"": [[1.421329831186221, 43.6338947003867]], ""type"": ""MultiPoint""}",84,Nouveau pont de Ginestous
+"43.634849200118154,1.421421551603778","{""coordinates"": [[1.421421551603778, 43.634849200118154]], ""type"": ""MultiPoint""}",85,Ancien pont de Ginestous
+"43.611975582491304,1.418286913194112","{""coordinates"": [[1.418286913194112, 43.611975582491304]], ""type"": ""MultiPoint""}",9,Canal latéral à la Garonne
+"43.6107051421977,1.417335839734371","{""coordinates"": [[1.417335839734371, 43.6107051421977]], ""type"": ""MultiPoint""}",10,Port de l’Embouchure
+"43.59844779843075,1.456924981357929","{""coordinates"": [[1.456924981357929, 43.59844779843075]], ""type"": ""MultiPoint""}",18,Glacières du canal
+"43.60300554722161,1.444759316191565","{""coordinates"": [[1.444759316191565, 43.60300554722161]], ""type"": ""MultiPoint""}",2,"Maison Riquet, 11 place Roger-Salengro"
+"43.595565571675635,1.456819553632558","{""coordinates"": [[1.456819553632558, 43.595565571675635]], ""type"": ""MultiPoint""}",22,Chapelle des bateliers au port Saint-sauveur
+"43.59600568719346,1.45554698461244","{""coordinates"": [[1.45554698461244, 43.59600568719346]], ""type"": ""MultiPoint""}",23,"Maison Fajac, administration du canal"
+"43.609505648402084,1.416644843759131","{""coordinates"": [[1.416644843759131, 43.609505648402084]], ""type"": ""MultiPoint""}",28,Bassin des filtres
+"43.61209056956347,1.425664207849543","{""coordinates"": [[1.425664207849543, 43.61209056956347]], ""type"": ""MultiPoint""}",31,Ecluse du Béarnais et maison éclusière
+"43.61379142306284,1.451053131322807","{""coordinates"": [[1.451053131322807, 43.61379142306284]], ""type"": ""MultiPoint""}",34,Ecluse de Matabiau et maison éclusière
+"43.61169467988928,1.452408403072018","{""coordinates"": [[1.452408403072018, 43.61169467988928]], ""type"": ""MultiPoint""}",38,Moulin sur l’écluse de Bayard
+"43.64676895964637,1.42385182508539","{""coordinates"": [[1.42385182508539, 43.64676895964637]], ""type"": ""MultiPoint""}",41,Briqueterie de Lalande
+"43.59261245347982,1.440397878976344","{""coordinates"": [[1.440397878976344, 43.59261245347982]], ""type"": ""MultiPoint""}",44,Ecluse Saint-Michel
+"43.61413550993326,1.450606621713061","{""coordinates"": [[1.450606621713061, 43.61413550993326]], ""type"": ""MultiPoint""}",47,La cale de Matabiau
+"43.616081775497626,1.438894846834523","{""coordinates"": [[1.438894846834523, 43.616081775497626]], ""type"": ""MultiPoint""}",49,Le lavoir des Minimes
+"43.55514166304266,1.480874038160555","{""coordinates"": [[1.480874038160555, 43.55514166304266]], ""type"": ""MultiPoint""}",52,Pont canal Georges Latécoère
+"43.5653769721183,1.471504605913281","{""coordinates"": [[1.471504605913281, 43.5653769721183]], ""type"": ""MultiPoint""}",53,Pont Giordano-Bruno
+"43.58768870981685,1.46049993013802","{""coordinates"": [[1.46049993013802, 43.58768870981685]], ""type"": ""MultiPoint""}",57,Pont des Demoiselles
+"43.616072080748154,1.437249448510703","{""coordinates"": [[1.437249448510703, 43.616072080748154]], ""type"": ""MultiPoint""}",70,Passerelle de Négreneys
+"43.60873031160368,1.423961479470219","{""coordinates"": [[1.423961479470219, 43.60873031160368]], ""type"": ""MultiPoint""}",78,Passerelle suspendue de Brienne
+"43.60365349386945,1.417435071182207","{""coordinates"": [[1.417435071182207, 43.60365349386945]], ""type"": ""MultiPoint""}",8,Prise d’eau du canal Saint-Pierre
+"43.62361744518845,1.419980225555261","{""coordinates"": [[1.419980225555261, 43.62361744518845]], ""type"": ""MultiPoint""}",83,Pont d’Elche
+"43.64675407940505,1.423047358771928","{""coordinates"": [[1.423047358771928, 43.64675407940505]], ""type"": ""MultiPoint""}",86,Pont de la Glacière
+"43.65179203304403,1.423525286163249","{""coordinates"": [[1.423525286163249, 43.65179203304403]], ""type"": ""MultiPoint""}",88,Pont autoroutier de Lalande
