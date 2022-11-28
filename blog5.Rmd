@@ -1,0 +1,448 @@
+---
+title: "Blog 5 - French Presidential Election 2022 - Toulouse, France"
+author: "Michael Ippolito"
+date: '2022-11-26'
+output: 
+  pdf_document:
+    dev: cairo_pdf
+    toc: yes
+  html_document:
+    theme: yeti
+    highlight: tango
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(faraway)
+
+```
+
+## Background
+
+Since I'm spending the fall in Toulouse, France, I wanted to get a sense of what kind of city I'm living in. Tolouse is the fourth largest city in France (after Paris, Marseille, and Lyon), with a population of about 433,000 in 2022. It is home to Airbus and has a significant industrial and technical community, as well as many expatriates. As an urban center, it isn't surprising that it is overwhelminingly democratic in terms of politics. For this blog post, I wanted to investigate this quantitatively. The city of Toulouse maintains an excellent and extensive collection of data sets about a range of topics, many of which I found useful for this post:
+
+https://data.toulouse-metropole.fr/explore/
+
+To put some boundaries on scope, I focussed on trying to predict percentage of votes during the second round of the 2022 presidential elections for the Toulouse metropolitan area. In France, the presidential elections are held in two rounds, akin to the primary and general elections in the United States. For predictors, I used a subset of this data, along with fifty other data sets I downloaded from the same site:
+
+| Predictor |
+|-----------|
+| accelerators_incubators |
+| agricultural_zones |
+| art_galleries |
+| bicycle_parking |
+| bicycle_rentals |
+| bowling_alleys |
+| business_centers |
+| cafe_concert_venues |
+| canal_sites |
+| carpool_stations |
+| cemeteries |
+| community_fitness_centers |
+| cultural_centers |
+| dog_parks |
+| dog_waste_bags |
+| dumps |
+| elementary_schools |
+| flood_zones_1875 |
+| game_libraries |
+| green_spaces |
+| gymnasiums |
+| institutes_of_cultural_instruction |
+| lakes |
+| libraries |
+| markets |
+| museums |
+| park_and_rides |
+| pedestrian_zones |
+| playgrounds |
+| pools |
+| presidential_election_billboards |
+| public_toilets |
+| recharging_stations |
+| regulation_offices |
+| scooter_rentals |
+| senior_restaurants |
+| skate_parks |
+| skating_rinks |
+| social_centers |
+| sociocultural_centers |
+| speed_displays |
+| stadiums |
+| taxi_zones |
+| tennis)courts |
+| theaters |
+| tramway_stations |
+| vaccination_centers |
+| wifi_zones |
+| workers_rights_centers |
+
+Each data set includes geographic coordinates (latitude and longitude) that I used to calculate how far each entity is away from each polling station. Then I took the median distance of all the entites in each category to feed into a binary logistic regression model to predict the percentage of the vote each candidate would get.
+
+
+## EDA
+
+The data set I used as the response includes results from all polling places in Toulouse and consists of the following fields:
+
+| Field | Description |
+|-------|-------------|
+| Sequence | sequence number |
+| Type | election type (PR=présidential) |
+| Année | election year (2022) |
+| Tour | election round (second round) |
+| Département | department (31 = Haute-Garonne) |
+| Commune | commune (555 = Toulouse) |
+| Code canton | voting district code (15 - 25) |
+| Code circonscription | constituency code (varies per voting district) |
+| Numéro du bureau | polling place number (varies per voting district) |
+| Indicatif | informational code (always I) |
+| Nombre d'inscrits | number of participants |
+| Nombre d'abstentions | number of abstentions |
+| Nombre de votants | number of voters = inscrits - abstentions |
+| Nombre de votants d'après les feuilles d'émargement | number of voters according to the attendance sheets (should be same as nombre de votants) |
+| Nombre de bulletins blancs | number of blank ballots |
+| Nombre de bulletins nuls | number of invalid ballots |
+| Nombre d'exprimés | number of valid ballots (votants - bulletins blancs - bulletins nuls) |
+| Nombre de candidats | number of candidates |
+| Sigle du candidat | candidate's name |
+| Nombre de voix du candidat | number of votes for the candidate |
+| Geo Shape | array of geographic coordinates outlining the area of polling place |
+| NOM | name of the polling place |
+| ADRESSE | address of the polling place |
+| geo_point_2d | geographic coordinates of the center of the polling place |
+
+The data required some cleaning, including spreading the data from long to wide format and separating the latitude and longtidue coordinates into different fields. The following is a summary of the fields in the response data frame after cleaning.
+
+```{r include=FALSE}
+
+# Read presidential election results file - contains the response variable
+dfresp_raw <- read.csv('https://raw.githubusercontent.com/mmippolito/cuny_data621_blog5/main/data/_response.csv', fileEncoding='latin1')
+glimpse(dfresp_raw)
+
+```
+
+
+```{r echo=FALSE}
+
+# Drop unneeded columns
+dfresp <- dfresp_raw %>% select(-Sequence, -Type, -Année, -Tour, -Département, -Commune, -Indicatif, -Nombre.de.candidats, -Geo.Shape)
+
+# Rename to friendlier names
+dfresp <- dfresp %>%
+    rename(
+        district=Code.canton,
+        constituency=Code.circonscription,
+        polling_place_num=Numéro.du.bureau,
+        participants=Nombre.d.inscrits,
+        abstentions=Nombre.d.abstentions,
+        voters1=Nombre.de.votants,
+        ballots=Nombre.de.votants.d.après.les.feuilles.d.émargement,
+        blank=Nombre.de.bulletins.blancs,
+        invalid=Nombre.de.bulletins.nuls,
+        valid=Nombre.d.exprimés,
+        candidate=Sigle.du.candidat,
+        votes=Nombre.de.voix.du.candidat,
+        polling_place=NOM,
+        polling_addr=ADRESSE,
+        geopoint=geo_point_2d
+    )
+dfresp <- dfresp %>%
+    spread(key='candidate', value='votes') %>%
+    rename(Le_Pen=`Le Pen`) %>%
+    separate(col=geopoint, sep=',', into=c('geo.lat', 'geo.lon'), remove=F) %>%
+    mutate(geo.lat=as.numeric(geo.lat), geo.lon=as.numeric(geo.lon))
+summary(dfresp)
+
+```
+
+The predictor fields also required some cleaning, including standardizing the name of the field containing geographic coordinates and separating it out into two different columns.
+
+```{r include=FALSE}
+
+# List of files containing predictor variables
+pred_files <- c(
+    'accelerators_incubators',
+    'agricultural_zones',
+    'art_galleries',
+    'bicycle_parking',
+    'bicycle_rentals',
+    'bowling_alleys',
+    'business_centers',
+    'cafe_concert_venues',
+    'canal_sites',
+    'carpool_stations',
+    'cemeteries',
+    'community_fitness_centers',
+    'cultural_centers',
+    'dog_parks',
+    'dog_waste_bags',
+    'dumps',
+    'elementary_schools',
+    'flood_zones_1875',
+    'game_libraries',
+    'green_spaces',
+    'gymnasiums',
+    'institutes_of_cultural_instruction',
+    'lakes',
+    'libraries',
+    'markets',
+    'museums',
+    'park_and_rides',
+    'pedestrian_zones',
+    'playgrounds',
+    'pools',
+    'presidential_election_billboards',
+    'public_toilets',
+    'recharging_stations',
+    'regulation_offices',
+    'scooter_rentals',
+    'senior_restaurants',
+    'skate_parks',
+    'skating_rinks',
+    'social_centers',
+    'sociocultural_centers',
+    'speed_displays',
+    'stadiums',
+    'taxi_zones',
+    'tennis)courts',
+    'theaters',
+    'tramway_stations',
+    'vaccination_centers',
+    'wifi_zones',
+    'workers_rights_centers'
+)
+
+# Init list of dataframes
+dfs_raw <- list()
+
+# Read files
+for (i in seq_along(pred_files)) {
+    fn <- paste0(
+        'https://raw.githubusercontent.com/mmippolito/cuny_data621_blog5/main/data/',
+        pred_files[i],
+        '.csv'
+    )
+    print("----------------------------------------------------------------------")
+    print(pred_files[i])
+    dfs_raw[[i]] <- read.csv(fn, fileEncoding='latin1')
+    #glimpse(dfs_raw[[i]])
+}
+
+```
+
+```{r include=FALSE}
+
+# Standardize geopoint columns
+dfs <- list()
+for (i in seq_along(pred_files)) {
+    dfs[[i]] <- dfs_raw[[i]]
+    print(paste0(i, ': ', pred_files[i]))
+    if ('Geo.Point' %in% colnames(dfs[[i]])) {
+        dfs[[i]] <- dfs[[i]] %>%
+            rename(geopoint=Geo.Point)
+    }
+    if ('Géolocalisation' %in% colnames(dfs[[i]])) {
+        dfs[[i]] <- dfs[[i]] %>%
+            rename(geopoint=Géolocalisation)
+    }
+    if ('EQUIP_GEOPOINT' %in% colnames(dfs[[i]])) {
+        dfs[[i]] <- dfs[[i]] %>%
+            rename(geopoint=EQUIP_GEOPOINT)
+    }
+    # Verify there aren't any data frames that don't have a standardized geopoint column
+    if (!'geopoint' %in% colnames(dfs[[i]])) {
+        print(paste0('WARNING!!!!! ', pred_files[i]))
+    }
+    dfs[[i]] <- dfs[[i]] %>%
+        mutate(geopoint=ifelse(str_length(geopoint) == 0, NA, geopoint)) %>%
+        drop_na(geopoint) %>%
+        separate(col=geopoint, into=c('geo.lat', 'geo.lon'), sep=',', remove=F) %>%
+        mutate(geo.lat=as.numeric(geo.lat), geo.lon=as.numeric(geo.lon))
+}
+
+```
+
+After cleaning the data, I calculated distances from each polling location to the various municipal entities we're using as predictors. We'll use the haversine formula to compute distance, which uses latitude and longitude, taking into account the curvature of the earth.
+
+```{r include=FALSE}
+
+# Haversine formula to calculate distance between two geographical points
+# from https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
+hav.dist <- function(lon1, lat1, lon2, lat2) {
+  R <- 6371000 # radius of the earth in meters
+  diff.lon <- (lon2 - lon1) * pi/180
+  diff.lat <- (lat2 - lat1) * pi/180
+  a <- sin(diff.lat / 2) ^ 2 + cos(lat1) * cos(lat2) * sin(diff.lon / 2) ^ 2
+  b <- 2 * asin(pmin(1, sqrt(a))) 
+  d = R * b
+  return(d)
+}
+
+# Create new dataframe to hold response and predictors
+df2 <- dfresp
+for (j in seq_along(pred_files)) {
+    df2[, pred_files[j]] <- NA
+}
+
+# Iterate through each polling location
+for (i in 1:nrow(dfresp)) {
+    
+    print(paste0('row ', i))
+    
+    # Iterate through each predictor
+    for (j in seq_along(pred_files)) {
+        
+        # Iterate through each location in this predictor to calculate distance to this polling location
+        d <- c()  # vector of distances
+        for (k in 1:nrow(dfs[[j]])) {
+            
+            # Calculate the haversine distance between the polling locaiton and the location of this predictor
+            hd <- hav.dist(dfresp[i, 'geo.lon'], dfresp[i, 'geo.lat'], dfs[[j]][k, 'geo.lon'], dfs[[j]][k, 'geo.lat'])
+            d <- c(d, hd)
+        }
+        meandist <- mean(d)
+        mediandist <- median(d)
+        mindist <- min(d)
+        
+        # Result
+        #print(paste0('    ', pred_files[j], '[', minid, ']: ', minhd))
+        #df2[i, pred_files[j]] <- minhd
+        #df2[i, pred_files[j]] <- meandist
+        df2[i, pred_files[j]] <- mediandist
+    }
+
+}
+
+```
+
+The following plots show the response as a function of predictors. As shown, as the distance increases to entities closely associated with metropolitan activities, the more votes for Le Pen were recorded.
+
+```{r fig.width=10}
+
+# Trim off columns not used in modeling
+dfmodel <- df2 %>%
+    select (-polling_place_num, -district, -constituency, -polling_place, -polling_addr, -geopoint, -geo.lat, -geo.lon)
+
+# EDA
+for (i in seq_along(pred_files)) {
+    newxlab <- gsub('_', ' ', pred_files[i])
+    #newxlab <- paste0('Distance (m) to nearest ', newxlab)
+    newxlab <- paste0('Median distance (m) to ', newxlab)
+    if (i %% 2 == 1) {
+        par(mfrow=c(1, 2))
+    }
+    #plot(dfplots$votes ~ dfplots[, pred_files[i]], col=as.factor(dfplots$candidate), 
+    #     pch=as.numeric(as.factor(dfplots$candidate)), xlab=newxlab, ylab='Votes')
+    plot(dfmodel$Le_Pen / (dfmodel$Le_Pen + dfmodel$Macron) ~ dfmodel[, pred_files[i]], 
+         xlab=newxlab, ylab='% Votes for Le Pen')
+    ax <- par('usr')
+}
+
+```
+
+The following plots illustrate which predictors are the most closely associated with each candidate.
+
+```{r fig.width=10}
+
+# Gather
+dfplots <- df2 %>%
+    select (-district, -constituency, -polling_place, -polling_addr, -geopoint, -geo.lat, -geo.lon) %>%
+    gather(c('Le_Pen', 'Macron'), key='candidate', value='votes')
+
+# Predictors associated with Le Pen
+ct <- 0
+for (i in c(47, 5, 3, 45)) {
+    ct <- ct + 1
+    newxlab <- gsub('_', ' ', pred_files[i])
+    #newxlab <- paste0('Distance (m) to nearest ', newxlab)
+    newxlab <- paste0('Median distance (m) to ', newxlab)
+    if (ct %% 2 == 1) {
+        par(mfrow=c(1, 2))
+    }
+    plot(dfplots$votes ~ dfplots[, pred_files[i]], col=as.factor(dfplots$candidate), 
+         pch=as.numeric(as.factor(dfplots$candidate)), xlab=newxlab, ylab='Votes')
+    ax <- par('usr')
+    legend(ax[1] + 200, ax[3] + 400, legend=c('Le Pen', 'Macron'), col=c(1, 2), pch=c(1, 2), cex=0.8)
+    mtext('Predictors associated with Le Pen', side=3, line=-1, outer=T)
+}
+
+# Predictors associated with Macron
+ct <- 0
+for (i in c(18, 9, 35, 48)) {
+    ct <- ct + 1
+    newxlab <- gsub('_', ' ', pred_files[i])
+    #newxlab <- paste0('Distance (m) to nearest ', newxlab)
+    newxlab <- paste0('Median distance (m) to ', newxlab)
+    if (ct %% 2 == 1) {
+        par(mfrow=c(1, 2))
+    }
+    plot(dfplots$votes ~ dfplots[, pred_files[i]], col=as.factor(dfplots$candidate), 
+         pch=as.numeric(as.factor(dfplots$candidate)), xlab=newxlab, ylab='Votes')
+    ax <- par('usr')
+    legend(ax[1] + 200, ax[3] + 400, legend=c('Le Pen', 'Macron'), col=c(1, 2), pch=c(1, 2), cex=0.8)
+    mtext('Predictors associated with Macron', side=3, line=-1, outer=T)
+}
+
+```
+
+
+## Modeling
+
+Since the response is binary (Le Pen vs Macron), I used a binary logistic regression model. Using backward elimination, I reduced the model to its most significant predictors.
+
+```{r, include=FALSE}
+
+# Binomial model - initial
+bmod <- glm(cbind(Le_Pen, Macron) ~ ., family=binomial(), data=dfmodel)
+summary(bmod)
+
+# Backward elimination
+bmod2 <- step(bmod, direction='backward', trace=F)
+summary(bmod2)
+
+# Most significant predictors
+coeffs <- coefficients(bmod2)
+sort(coeffs, decreasing=T)[1:10]
+sort(coeffs)[1:10]
+
+```
+
+The following shows a summary of the reduced model:
+
+```{r}
+
+# Reduced model
+summary(bmod2)
+
+```
+
+As shown, the residual deviance was much less than the null deviance on 229 degrees of freedom, indicating a good fit.
+
+
+## Conclusion
+
+Using the parameters estimated by the model, predictions were made of the candidates' percentages of the vote. As shown below, the model performed well, with an R-squared value of 0.63 comparing the predicted versus the actual percentage. It can be concluded that calculating the median distance between each polling place and various civic features is a fairly good means of predicting election results. An additional model might be created for the first round of the election that included more than just the two finalists.
+
+```{r}
+
+# Calculate predicted probabilities
+dfmodel$p <- dfmodel$Le_Pen / (dfmodel$Le_Pen + dfmodel$Macron)
+dfmodel$pred_p <- ilogit(predict(bmod2, newdata=dfmodel))
+dfmodel$winner <- ifelse(dfmodel$Le_Pen == dfmodel$Macron, 'Draw', ifelse(dfmodel$Le_Pen > dfmodel$Macron, 'Le_Pen', 'Macron'))
+dfmodel$pred_winner <- ifelse(dfmodel$pred_p == 0.5, 'Draw', ifelse(dfmodel$pred_p > 0.5, 'Le_Pen', 'Macron'))
+
+# Plot predicted probabilities vs actual
+plot(pred_p ~ p, data=dfmodel, xlab='% votes for Le Pen', ylab='Predicted % votes for Le Pen',
+     main='Predicted vs Actual Voting Percentages', xlim=c(0, 0.5), ylim=c(0, 0.5))
+abline(0, 1, col=2, lt=2)
+
+# Evaluate model
+lmod <- lm(pred_p ~ p, data=dfmodel)
+summary(lmod)
+
+```
+
