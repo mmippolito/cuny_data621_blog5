@@ -63,5 +63,6 @@ To put some boundaries on scope, I focussed on trying to predict percentage of v
 
 <br />
 Each data set includes geographic coordinates (latitude and longitude) that I used to calculate how far each entity is away from each polling station. Then I took the median distance of all the entites in each category to feed into a binary logistic regression model to predict the percentage of the vote each candidate would get.<br />
+<br />
 
 [Link to full PDF](https://github.com/mmippolito/cuny_data621_blog5/blob/main/blog5.pdf)
