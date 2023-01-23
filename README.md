@@ -2,6 +2,8 @@
 CUNY DATA621<br />
 Blog #5</h3>
 <br />
+<h2>French Presidential Election 2022: A Linear Model to Predict Precinct Winners Based on Geographical Distance to Predictors</h2>
+<br />
 <h3>Background</h3>
 <br />
 Since I'm spending the fall in Toulouse, France, I wanted to get a sense of what kind of city I'm living in. Tolouse is the fourth largest city in France (after Paris, Marseille, and Lyon), with a population of about 433,000 in 2022. It is home to Airbus and has a significant industrial and technical community, as well as many expatriates. As an urban center, it isn't surprising that it is overwhelminingly democratic in terms of politics. For this blog post, I wanted to investigate this quantitatively. The city of Toulouse maintains an excellent and extensive collection of data sets about a range of topics, many of which I found useful for this post (https://data.toulouse-metropole.fr/explore/).<br />
